@@ -1,0 +1,104 @@
+## Relational versus non-relational DB
+
+# JSON examples
+
+# Simple key-values represented in JSON
+
+{
+ "Index":"1001",
+ "Name":"Johan",
+ “Surname”:”Dohe”
+ "Position":”Engineer”
+ "Active":"Y"
+ }
+ 
+ # Nnested attributes represented in JSON
+ 
+ {
+ "Index":"1001",
+ "Name":"Ben",
+ “Surname”:”Dopher”
+ "Position":”Administrator”
+ "Active":"Y"
+ "Group Membership": [
+ {
+ "Sales":"Administator",
+ },
+ {
+ "Tech":"Member",
+ }]
+ }
+ 
+# Simple key-values represented in JSON
+ 
+ {
+ "username" : thownsr,
+ "lastname" : “Thowns",
+ "firstname" : "Rick",
+}
+
+# A map represented in JSON
+
+{
+"date_of_bith" :
+ [
+ "year" : 1979,
+ "month" : 09,
+ "day" : 25
+ ]
+}
+
+# A set represented in JSON
+
+{
+ "group_membership" :
+ [“Users", “Admins", “Engineers" ]
+}
+ 
+## Command line reference for Accessing DynamoDB
+
+# Create a DynamoDB table
+
+aws dynamodb create-table \
+--table-name users \
+--attribute-definitions \
+AttributeName=username,AttributeType=S \
+AttributeName=last_name,AttributeType=S \
+--key-schema AttributeName=username,KeyType=HASH AttributeName=lastn_name,KeyType=RANGE \
+--provisioned-throughput ReadCapacityUnits=100,WriteCapacityUnits=400
+
+# Create a DynamoDB item
+
+aws dynamodb put-item \
+--table-name users \
+--item '{ \
+"username": {"S": "thownsr"}, \
+"last_name": {"S": "Thowns"}, \
+"first_name": {"S": "Rick"} }'
+
+# Retrieve a DynamoDB item
+
+aws dynamodb get-item \
+--table-name users \
+--key '{ \
+"username": {"S": "thownsr"}, \
+"last_name": {"S": "Thowns"}, 
+
+## User authentication and access control
+
+# Example DynamoDB access policy
+
+{
+ "Version": "2012-10-17",
+ "Statement":[{
+ "Effect":"Allow",
+ "Action":["dynamodb:*","s3:*"],
+ "Resource":["arn:aws:dynamodb:us-east-1:111222333444:table/catalogue"]
+ },
+ {
+ "Effect":"Deny",
+ "Action":["dynamodb:*","s3:*"],
+ "NotResource":["arn:aws:dynamodb:us-east-   1:111222333444:table/catalogue"] 
+ },
+ ]
+ }

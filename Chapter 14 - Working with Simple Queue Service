@@ -1,0 +1,27 @@
+## Command line reference for managing queues in SQS
+ 
+# Create an SQS queue
+ 
+aws sqs create-queue --queue-name markocloud
+ 
+# List SQS queues
+ 
+aws sqs list-queues
+ 
+# Send a message to a SQS queue
+ 
+aws sqs send-message --queue-url https://us-east-2.queue.amazonaws.com/866117724370/markocloud --message-body "This is a test message"
+ 
+# Receiving a message from an SQS queue
+ 
+aws sqs receive-message --queue-url "https://us-east-2.queue.amazonaws.com/866117724370/markocloud"
+
+# Deleting a message from an SQS queue
+
+aws sqs delete-message \
+ --queue-url "https://us-east-2.queue.amazonaws.com/866117724370/markocloud" \
+ --receipt-handle "AQEBE9Pi+P5RP9FoZxgQ8xtDVT4qetd060GmD6LVr3s3iltZpAixsujI/2xEE4FqD/Mrxa4H98hSxT6Gcn2l5L0jtJRlrtVK9kl/xpjwjQqoTsEh5i9B9WWDly/QQPj6RpeL7BvfytoQ7I25DqlTHwZQMEhGgD29vJ5FzYFi8WSc7+mVozTwSOsqXM0PeoCOMnlP8UaBFniRCIVvk9HbNFE198zC+F1bDL682NfRJA7SBgRMyjaVxSauQ9hkh/5UZJElSHiYaJtEKKbYXzfosaAeHq3BNEZGQk2KV33IAnJJx1H2w7g6tODAeRF7yhVOuWAsVXfm1eSFQ46DCH9o7kAAsxEYXYO19o0uNyjMwadHA0U0CD/4inoehQAtugF2AlNEzoyTaYVLCz+ZKRVbe9wSMw=="
+
+# Purging an SQS queue of all messages
+ 
+aws sqs purge-queue --queue-url "https://us-east-2.queue.amazonaws.com/866117724370/markocloud"

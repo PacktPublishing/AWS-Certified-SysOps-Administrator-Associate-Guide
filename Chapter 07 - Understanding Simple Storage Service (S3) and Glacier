@@ -1,0 +1,21 @@
+# Bucket policy to make the "685684-mynewbucket" bucket public. Replace "685684-mynewbucket" with your bucket name.
+
+{
+"Version": "2012-10-17",
+"Statement": [
+{
+"Sid": "PublicReadGetObject",
+"Effect": "Allow",
+"Principal": "*",
+"Action": "s3:GetObject",
+"Resource": "arn:aws:s3:::685684-mynewbucket/*"
+}
+]
+}  
+
+# Code for the static website we created on S3
+
+<html>
+<p>Everyone loves AWS!</p>
+<p><a href="https://markocloud.com"><img src="https://markocloud.com/wp-content/uploads/2016/02/markocloud-180.gif" alt="" width="180" height="155" /></a></p>
+</html>

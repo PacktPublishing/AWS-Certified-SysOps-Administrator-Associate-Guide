@@ -1,0 +1,23 @@
+## Example of using AWS CLI to publish data points:
+
+aws cloudwatch put-metric-data --metric-name WebsiteVisitors --namespace markocloud --value 37 --timestamp 2019-01-09T20:02:17.344Z
+
+## Command line reference for publishing custom memory metrics using the CloudWatch Enhanced Monitoring Scripts
+
+# Install the prerequisites
+sudo yum install -y perl-Switch perl-DateTime perl-Sys-Syslog perl-LWP-Protocol-https perl-Digest-SHA.x86_64
+
+# Retrieve and install the monitoring scripts
+curl https://aws-cloudwatch.s3.amazonaws.com/downloads/CloudWatchMonitoringScripts-1.2.2.zip -O && \
+unzip CloudWatchMonitoringScripts-1.2.2.zip && \
+rm CloudWatchMonitoringScripts-1.2.2.zip
+
+# Enter the aws-scripts-mon directory and test the monitoring script
+cd aws-scripts-mon
+./mon-put-instance-data.pl --mem-util --verify --verbose
+
+# If the test has completed sucessfully then you can now try and publish all available memory metrics to CloudWatch
+./mon-put-instance-data.pl --mem-used-incl-cache-buff --mem-util --mem-used --mem-avail
+
+# Once happy with your setup you can create a cron job that sends the custom metrics to the CloudWatch environment based on your preferences. The example below sends metrics every 5 minutes:
+*/5 * * * * ~/aws-scripts-mon/mon-put-instance-data.pl --mem-used-incl-cache-buff --mem-util --disk-space-util --disk-path=/ --from-cron

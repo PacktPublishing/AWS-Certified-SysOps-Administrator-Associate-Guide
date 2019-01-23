@@ -1,0 +1,5 @@
+# Nohup script for webserver to display text on oprt 80
+# Replace webserver# with webserver1 or webserver2 to identify the web server that is responding to the request
+
+sudo su
+nohup sh -c "mkdir test && cd test && echo '<html>Hello from webserver#</html>' > index.html && python -m SimpleHTTPServer 80" &
