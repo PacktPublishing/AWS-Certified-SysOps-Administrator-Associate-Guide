@@ -1,8 +1,3 @@
-## $5 Tech Unlocked 2021!
-[Buy and download this Book for only $5 on PacktPub.com](https://www.packtpub.com/product/aws-certified-sysops-administrator-associate-guide/9781788990776)
------
-*If you have read this book, please leave a review on [Amazon.com](https://www.amazon.com/gp/product/1788990773).     Potential readers can then use your unbiased opinion to help them make purchase decisions. Thank you. The $5 campaign         runs from __December 15th 2020__ to __January 13th 2021.__*
-
 # AWS Certified SysOps Administrator - Associate Guide
 
 <a href="https://www.packtpub.com/virtualization-and-cloud/aws-certified-sysops-administrator-associate-guide?utm_source=github&utm_medium=repository&utm_campaign=9781788990776 "><img src="https://d255esdrn735hr.cloudfront.net/sites/default/files/imagecache/ppv4_main_book_cover/9781788990776cover.png" alt="AWS Certified SysOps Administrator - Associate Guide" height="256px" align="right"></a>
